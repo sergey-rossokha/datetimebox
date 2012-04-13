@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>DateTimeBox example</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+	<script src="jquery.datetimebox.js"></script>
+</head>
+<body>
+	<h1>Simple date selector</h1>
+	<div>
+		<input id="datebox" name="datebox" value="">
+		<script>
+			$('#datebox').datetimebox({'type': 'date'});
+		</script>
+	</div>
+
+	<br/>
+
+	<h1>Simple date time selector</h1>
+	<div>
+		<input id="datetimebox" name="datetimebox" value="">
+		<script>
+			$('#datetimebox').datetimebox({'type': 'datetime'});
+		</script>
+	</div>
+</body>
+</html>

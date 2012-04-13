@@ -28,7 +28,11 @@
                 var newMinute = newDate.getMinutes();
 
                 /*update hidden field */
-                dateHiddenElement.val(newYear + '-' + newMonth + '-' + newDay);
+                if (settings['type'] == 'datetime') {
+                    dateHiddenElement.val(newYear + '-' + newMonth + '-' + newDay + ' ' + methods.zeroPad(newHour) + ':' + methods.zeroPad(newMinute));
+                } else {
+                    dateHiddenElement.val(newYear + '-' + newMonth + '-' + newDay);
+                }
 
                 if ($(dateYearElement).find('option').length == 0) {
                     for (year = currentDate.getFullYear(); year < currentDate.getFullYear() + 10; year++) {
@@ -104,15 +108,14 @@
                 container.append('<select id="' + controlName + '-time"></select>');
             }
 
-            dateHiddenElement = container.find('#' + controlName);
-            dateYearElement = container.find('#' + controlName + '-year');
-            dateMonthElement = container.find('#' + controlName + '-month');
-            dateDayElement = container.find('#' + controlName + '-day');
-
+            var dateHiddenElement = container.find('#' + controlName);
+            var dateYearElement = container.find('#' + controlName + '-year');
+            var dateMonthElement = container.find('#' + controlName + '-month');
+            var dateDayElement = container.find('#' + controlName + '-day');
+            var dateTimeElement = null;
+            
             if (settings['type'] == 'datetime') {
                 dateTimeElement = container.find('#' + controlName + '-time');
-            } else {
-                dateTimeElement = null;
             }
 
             methods.updateDateTime(dateHiddenElement, dateYearElement, dateMonthElement, dateDayElement, dateTimeElement, new Date());
